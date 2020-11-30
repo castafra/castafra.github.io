@@ -380,7 +380,7 @@
 	}
 
 	.\36 u, .\36 u\24 {
-		width: 50%;
+		width: 70%;
 		clear: none;
 		margin-left: 0;
 	}
@@ -1256,7 +1256,7 @@
 		}
 
 		.\33 u\28small\29, .\33 u\24\28small\29 {
-			width: 25%;
+			width: 30%;
 			clear: none;
 			margin-left: 0;
 		}
@@ -1287,7 +1287,7 @@
 		.\31 u\24\28small\29 + * {
 			clear: left;
 		}
-
+		
 		.\-11u\28small\29 {
 			margin-left: 91.66667%;
 		}
@@ -2187,6 +2187,15 @@
 		border: 0;
 		display: inline-block;
 		position: relative;
+	}
+
+	.portrait {
+		border-radius: 0;
+		border: 0;
+		display: inline-block;
+		position: relative;
+		width: 10%;
+    	height: 10%;
 	}
 
 		.image img {
@@ -3331,7 +3340,7 @@
 			background-color: #1E2832;
 			color: rgba(255, 255, 255, 0.75);
 			background-attachment: fixed;
-			background-image: url("images/overlay.png"), url("../../images/pic11.jpg");
+			background-image: url("images/overlay.png"), url("../../images/banner2.jpg");
 			background-size: cover;
 		}
 
@@ -3877,9 +3886,9 @@
 	#banner {
 		padding: 8em 0 6em 0;
 		background-color: #1E2832;
-		color: rgba(255, 255, 255, 0.75);
+		color: rgba(255, 255, 255);
 		background-attachment: fixed;
-		background-image: url("images/overlay.png"), url("../../images/banner.jpg");
+		background-image: url("images/overlay.png"), url("../../images/banner1.jpg");
 		background-size: cover;
 		text-align: center;
 	}
@@ -4226,3 +4235,7 @@
 			}
 
 		}
+
+.blocktitle {
+	text-align: center;  /* Override centering by using left as a value */
+}
