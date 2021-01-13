@@ -12,11 +12,14 @@
 		<title>Projets by FC</title>
 		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-            $(document).ready(function(){
-            $('#article').load("projects/diurn-ai-raw.html");
-         });
+            $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = 'projects/' + $(this).data('include') + '.html'
+                $(this).load(file)
+                })
+            })
         </script>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -46,7 +49,7 @@
 
             
             
-            <div id="article"></div>
+            <div data-include="diurn-ai-raw"></div>
 				
 
 		<!-- Footer -->
