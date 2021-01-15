@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-  <link rel="icon" href="images/logo-fc.png">
-<title>diurn-ai-raw</title>
+
+<title>diurn-ai</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -51,8 +51,6 @@ video {
   display: inline-block;
   vertical-align: baseline;
 }
-body {
-  background-color: #1E2832 !important;}
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -61,6 +59,8 @@ audio:not([controls]) {
 template {
   display: none;
 }
+body {
+  background-color: #1E2832 !important;}
 a {
   background-color: transparent;
 }
@@ -13118,14 +13118,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Diurn.ai-:-The-instagram-page-that-summarizes-the-news">Diurn.ai : The instagram page that summarizes the news<a class="anchor-link" href="#Diurn.ai-:-The-instagram-page-that-summarizes-the-news">&#182;</a></h1>
+<h1><center>Diurn.ai : The instagram page that summarizes the news</center></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/ig-showcase.PNG"></p>
+<p><img src="images/ig-showcase.PNG" width = 700cm></p>
 
 </div>
 </div>
@@ -13133,7 +13133,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Abstract">Abstract<a class="anchor-link" href="#Abstract">&#182;</a></h2>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13143,8 +13143,9 @@ div#notebook {
 <p>In the era of internet, news are everywhere and it has become trivial to be aware of an event that has just happened at the other side of the globe. However, this huge quantity of information is received in fragments, and is poorly decrypted. As a result, it becomes hard to distinguish the import events from the lesser news. Being aware of the news almost instantly is crucial and paradoxally, with the decline of the print media, less time is taken to do so and the process often consist in reading the headlines. 
 To tackle this issue, several platforms/media promise their users to send them only the important news and some even offer a daily summary. This work is done by professionals (journalist) who decide what has to be summarized.</p>
 <p>But what if this process was done automatically ? What if an algorithm was able to retrieve the hot news and condense them, assuring reliability and impartiality ?</p>
-<p>With the recent advances in the Deep Learning field, Neural Language Processing is becoming more and more powerful and accessible. The summarization task - hard for machines but also for humans - is starting to get powerful thanks to state of the art attention deep learning model.</p>
-<p>To learn more about the recents advances in NLP, I thus decided as a personal project to tackle the summarization issue by implementing an algorithm that would scrap the news and resume them in an Instagram post. Why Instagram ? Because it is a popular social network particularly used by activists which proves that beyond posting photos of cute dogs or hollidays memories, it can also be used to inform (ideally impartially).</p>
+<p>With the recent advances in the Deep Learning field, Neural Language Processing is becoming more and more powerful and accessible. The summarization task - hard for machines but also for humans - is starting to give satisfactory results thanks to state of the art attention deep learning models.</p>
+<p>To learn more about the recents advances in NLP, I thus decided as a personal project to tackle the summarization issue by implementing an algorithm that would scrap the news and resume it in an Instagram post. Why Instagram ? Because it is a popular social network particularly used by activists which proves that beyond posting photos of cute dogs or hollidays memories, it can also be used to inform (ideally impartially).</p>
+<p>To view the result, browse the <a href="https://www.instagram.com/diurn.ai/">@diurn.ai</a> account on Instagram.</p>
 
 </div>
 </div>
@@ -13159,7 +13160,244 @@ To tackle this issue, several platforms/media promise their users to send them o
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>To retrieve the articles' text, I use the powerful <a href="https://newspaper.readthedocs.io/en/latest/">Newspaper3k</a> library. With only an article's URL, it outputs the title and the body of the article.</p>
+<p>The articles that are chosen are for the moment the 3 main articles in the World news category on <a href="https://www.reuters.com/world">Reuters.com</a>. To get the URLs, I use the <a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> library as a scrapping method.</p>
+<p>The choice of using Reuters as a news source is arbitrary and an improvement could be to retrieve the trending articles from different sources.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Article-summarization">Article summarization<a class="anchor-link" href="#Article-summarization">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Overview-of-Natural-language-Processing">Overview of Natural language Processing<a class="anchor-link" href="#Overview-of-Natural-language-Processing">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note : this part is intended to present an overview of text summarization using Deep Learning methods but should not be consider as a course/tutorial. To learn about NLP with Deep Learning, I suggest following the great <a href="http://web.stanford.edu/class/cs224n/index.html">Stanford CS 224N course</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Recurrent-Neural-Networks-(RNN)">Recurrent Neural Networks (RNN)<a class="anchor-link" href="#Recurrent-Neural-Networks-(RNN)">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>RNN is ageneralization of feedforward neural networks to sequences. Givent a sequence of inputs $[x_1,...,X_T]$, a RNN compute the sequence of outputs $[o_1,...,o_T]$ by iterating : 
+$$h_t = \sigma(Ux_t + Vh_{t-1})$$
+$$o_t = Wh_t$$
+where $\sigma$ is the activation function</p>
+<div>
+<img src="images/rnn.png" width="500"/>
+</div><p>This architecture allows it to exhibit temporal dynamic behavior and is particularly useful for domains such as speech recognition. However, it is not clear how to apply RNNs to problems with inputs and outputs of different length.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Sequence-to-Sequence-models-(seq2seq)">Sequence to Sequence models (seq2seq)<a class="anchor-link" href="#Sequence-to-Sequence-models-(seq2seq)">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Seq2seq models are a class of Reccurent Neural Networks (RNN) models used to solve complex NLP tasks. 
+In a seq2seq model used for abstractive summarization, a RNN is trained to map an input sequence <strong>$[x_1,x_2,...,x_{n_x}]$</strong> of word vectors to an output sequence <strong>$[y_1,y_2,...,y_{n_y}]$</strong> . This case is more general and it is the one in which we are when we want to do text summarization. It is more complex because it requires to know the entire input sequence before starting to predict the output sequence. Here is how it works :</p>
+<ul>
+<li>A RNN layer acts as an <strong>encoder</strong> : it processes the input sequence and returns its own internal state. Only the state will be used as "context", the outputs of the RNN are discarded </li>
+<li>Another RNN layer acts as a <strong>decoder</strong> : it is trained to turn the target sequences into the same sequences but offset by one timestep. Effectively, the decoder learns to generate $y_{t+1}$ given $y_t$ conditioned on the input sequence. </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div>
+<img src="images/seq2seq.gif" width="700"/>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the case of text summarization, seq2seq model can be represented as follows :</p>
+<table><tr>
+<td> 
+  <p align="center" style="padding: 10px">
+    <img alt="Forwarding" src="images/encoder.png" width="320">
+    <br>
+
+  </p> 
+</td>
+<td> 
+  <p align="center">
+    <img alt="Routing" src="images/decoder.png" width="515">
+    <br>
+
+  </p> 
+</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Attention-Mechanisms">Attention Mechanisms<a class="anchor-link" href="#Attention-Mechanisms">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Initially designed in the context of Neural Machine Translation using Seq2Seq Models, Attention Mechanisms have gained popularity these last years thanks to the great results they provide in multiple domains. They are used to model long-range interaction, which is particularly useful in NLP. The key idea is to build shortcuts between a context vector and the input, to allow a model to attend to different parts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div>
+<img src="images/attention.PNG" width="500"/>
+</div>
+<div>
+
+For the summarization task, it becomes : 
+
+<img src="images/attention-summ.png" width="500"/>
+    <em style="color: grey">The decoder uses the → to signal when it wants to move to the next window</em>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Transformers">Transformers<a class="anchor-link" href="#Transformers">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Introduced by Vaswani <em>et al.</em> in <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>, Transformers are models with an architecture that relies entirely on an attention mechanism to draw global dependencies between input and output instead of using recurrent models. A great benefit is that it enables more parallelization than methods like RNNs and CNNs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div>
+<img src="images/transformers.jpg" width="300"/>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="BERT">BERT<a class="anchor-link" href="#BERT">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bidirectional Encoder Representations from Transformers is an improvement  of standart Transformers. It removes the unidirectionality constraint by using a <strong>Masked Language Model</strong> (MLM) pre-training objective. The MLM randomly masks some tokens from the input and the goal is to predict the original vocabulary id of the masked words based on its context. Unlike unidirectional language model pre-training, MLM objective enables the representation to take into account both left and right context, allowing us to pre-train a deep birectional Transformer. In addition to the MLM, BERT uses a Next Sentence Prediction task that pre-train text-pair representations.</p>
+<p>The training of BERT is done in two steps :</p>
+<ul>
+<li><strong>Pre-training</strong> : the model is trained on unlabeled data over different pre-training tasks;</li>
+<li><strong>Fine-tuning</strong> : initialisation is done with the pre-trained parameters, then all the parameters are fine-tuned using data from the downstream tasks (MNLI, NER...) ; each having its own separate fine-tuned model.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div>
+<img src="images/bert.jpg" width="600"/>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="BART">BART<a class="anchor-link" href="#BART">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this summarization task, I have used the <a href="https://scontent-cdt1-1.xx.fbcdn.net/v/t39.8562-6/106373513_3414102562251474_8005430471454563564_n.pdf?_nc_cat=105&amp;ccb=2&amp;_nc_sid=ae5e01&amp;_nc_ohc=ICUb5zgdScwAX8TY5Ru&amp;_nc_ht=scontent-cdt1-1.xx&amp;oh=0082568147f63c7ddecf194fe44eb757&amp;oe=6026AA84">BART</a> model, recently proposed by the Facebook AI research team. It has proven state of the art results in several NLP tasks, and in particular in text summarization.</p>
+<div>
+<img src="images/bart.png" width="600"/>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The results given by the BART autoencoder are from my point of view really impressive. Here is an example :</p>
+<p><strong>Input article</strong></p>
+
+<pre><code>Prime Minister Mark Rutte announced the resignation of his government on Friday, accepting responsibility for years of mismanagement of childcare subsidies, which wrongfully drove thousands of families to financial ruin.
+
+Rutte said he had handed his resignation to King Willem-Alexander. The cabinet would remain in place in a caretaker capacity to manage the coronavirus crisis for now, with an election already due on March 17.
+
+The resignation follows a parliamentary inquiry last month that found bureaucrats at the tax service had wrongly accused families of fraud.
+
+The inquiry report said around 10,000 families had been forced to repay tens of thousands of euros of subsidies, in some cases leading to unemployment, bankruptcies and divorces, in what it called an “unprecedented injustice”.
+
+Many of the families were targeted based on their ethnic origin or dual nationalities, the tax office said last year.
+
+Orlando Kadir, an attorney representing around 600 families in a lawsuit against politicians, said people had been targeted “as a result of ethnic profiling by bureaucrats who picked out their foreign-looking names”.
+
+The crisis comes with the Netherlands in the midst of the toughest lockdown of the COVID-19 pandemic, and Rutte considering even more curbs as infections surge.
+
+Even though public support for the government’s COVID-19 measures has dipped sharply in recent weeks, Rutte’s People’s Party for Freedom and Democracy (VVD) is still riding high in public opinion polls ahead of the March resultselection.
+
+Rutte’s party is projected to take just under 30% of the vote, more than twice that seen going to the second placed PVV, the anti-Islam party of Geert Wilders. Rutte has served since 2010, having won re-election twice.</code></pre>
+<p><strong>Output Summary</strong></p>
+
+<pre><code>Prime Minister Mark Rutte accepts responsibility for mismanagement of childcare subsidies. Thousands of families forced to repay tens of thousands of euros of subsidies, leading to unemployment, bankruptcies and divorces. Inquiry last month found bureaucrats at the tax service had wrongly accused families of fraud. Rutte has served since 2010, having won re-election twice.</code></pre>
+<p>The result is of course not perfect and some elements are missed, while there are some sentences that are not reformulated.It also lacks a bit of linking words. But overall, the summary is understandable and gives a pretty good glimpse of what the article is about!</p>
+
 </div>
 </div>
 </div>
@@ -13173,7 +13411,60 @@ To tackle this issue, several platforms/media promise their users to send them o
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results-and-future-improvements">Results and future improvements<a class="anchor-link" href="#Results-and-future-improvements">&#182;</a></h2>
+<h3 id="Creating-the-Image">Creating the Image<a class="anchor-link" href="#Creating-the-Image">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once the daily news is retrieved, we have to turn it into a image with a caption. The image will be composed of the title of the main article, with as background an image from <a href="https://unsplash.com/">Unsplash</a> that is supposed to refer to the article's theme. 
+To do so, the steps are :</p>
+<p><strong>1.</strong> Finding the main article's theme :</p>
+<p>I retrieve the 2 tokens that occur the most in the article, without including the stopwords ("the", "a", "are", "we"...). This method is probably not optimal but give fair enough results.</p>
+<p><strong>2.</strong> Retriving the corresponding image :</p>
+<p>Unsplash proposes a free photo API that enables to retrieve photos with a simple GET request. Creating a developper profile on the website is only needed and with few code lines in python we can get the wished photo :</p>
+<p><code>r = requests.get('https://api.unsplash.com/search/photos?query='+theme+'&amp;page=1&amp;per_page=30&amp;client_id='+client_id)
+data = r.json()
+photo = data['results'][0]['urls']['raw']</code></p>
+<p><strong>3.</strong> Building the image :</p>
+<p>Finally, to build the image, I have used the Python <strong>PIL</strong> library. It contains several functions to modify a picture and add text with a desired font over it.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Posting-on-Instagram">Posting on Instagram<a class="anchor-link" href="#Posting-on-Instagram">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In its battle again the bots of fake accounts, Instagram has made it really hard to automate task with code. One of the last library that still successfully enables us to post on Instagram is <a href="https://github.com/ohld/igbot">Instabot</a>. Basically, it uses Selenium to automate some tasks on the application.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Posible-future-improvements">Posible future improvements<a class="anchor-link" href="#Posible-future-improvements">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Diversifying the news' source</li>
+<li>Classifying the article's topic </li>
+<li>Covering other topics (e.g. Sport results) </li>
+<li>Try to post Stories (even if it seems impossible now with the powerful anti-bot algorithms) </li>
+</ul>
+
 </div>
 </div>
 </div>
